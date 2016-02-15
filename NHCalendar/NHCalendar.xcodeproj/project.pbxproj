@@ -12,6 +12,7 @@
 		8E003CF31C720C3B00B40582 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8E003CF11C720C3B00B40582 /* Main.storyboard */; };
 		8E003CF51C720C3B00B40582 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8E003CF41C720C3B00B40582 /* Assets.xcassets */; };
 		8E003CF81C720C3B00B40582 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8E003CF61C720C3B00B40582 /* LaunchScreen.storyboard */; };
+		8E003D001C720DE600B40582 /* NHDate_Categroy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E003CFF1C720DE600B40582 /* NHDate_Categroy.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -22,6 +23,7 @@
 		8E003CF41C720C3B00B40582 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		8E003CF71C720C3B00B40582 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		8E003CF91C720C3B00B40582 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		8E003CFF1C720DE600B40582 /* NHDate_Categroy.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NHDate_Categroy.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -56,6 +58,7 @@
 			children = (
 				8E003CED1C720C3B00B40582 /* AppDelegate.swift */,
 				8E003CEF1C720C3B00B40582 /* ViewController.swift */,
+				8E003CFF1C720DE600B40582 /* NHDate_Categroy.swift */,
 				8E003CF11C720C3B00B40582 /* Main.storyboard */,
 				8E003CF41C720C3B00B40582 /* Assets.xcassets */,
 				8E003CF61C720C3B00B40582 /* LaunchScreen.storyboard */,
@@ -137,6 +140,7 @@
 			files = (
 				8E003CF01C720C3B00B40582 /* ViewController.swift in Sources */,
 				8E003CEE1C720C3B00B40582 /* AppDelegate.swift in Sources */,
+				8E003D001C720DE600B40582 /* NHDate_Categroy.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -284,6 +288,7 @@
 				8E003CFE1C720C3B00B40582 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
