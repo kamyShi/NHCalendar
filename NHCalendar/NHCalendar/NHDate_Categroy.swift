@@ -28,7 +28,26 @@ extension NSDate {
         let date = calendar.dateFromComponents(com)
         //我们大致可以理解为：某个时间点所在的“小单元”，在“大单元”中的位置  ordinalityOfUnit
         let firstWeekDay = calendar.ordinalityOfUnit(.Weekday, inUnit: .WeekOfMonth, forDate: date!)
-        return firstWeekDay
+        return firstWeekDay - 1
     }
+    /**
+     获取指定时间下一个月的时间
+     */
+    func getNextDate() ->NSDate {
+        let calendar = NSCalendar.currentCalendar()
+        let com = calendar.components([.Year,.Month,.Day], fromDate: self)
+        com.month += 1
+        return calendar.dateFromComponents(com)!
+    }
+    /**
+     获取指定时间上一个月的时间
+     */
+    func getLastDate() ->NSDate {
+        let calendar = NSCalendar.currentCalendar()
+        let com = calendar.components([.Year,.Month,.Day], fromDate: self)
+        com.month -= 1
+        return calendar.dateFromComponents(com)!
+    }
+    
 }
 

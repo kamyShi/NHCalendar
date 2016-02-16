@@ -10,19 +10,30 @@ import UIKit
 
 class NHCalendarContentView: UIView,UICollectionViewDataSource,UICollectionViewDelegate {
 
-    
+    var MothLenght = 0
+    var MothFirstDay = 0
+    var dataArr = NSMutableArray()
     override init(frame: CGRect) {
         super.init(frame: frame)
+        self.addSubview(collectionView)
+        getData()
+    }
+    func getData() {
+
+        self.dataArr.addObjectsFromArray(NHDateTool.getRecentDate(NSDate()) as [AnyObject])
+        self.collectionView.reloadData()
     }
     // MARK: collection代理
     func numberOfSectionsInCollectionView(collectionView: UICollectionView) -> Int {
-        return 5
+        return 1
     }
     func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 44
+        return self.dataArr.count
     }
     func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCellWithReuseIdentifier("NHCalendarCell", forIndexPath: indexPath) as! NHCalendarCell
+        let date = self.dataArr[indexPath.row] as! NSDate
+        cell.date = date
         return cell
     }
     // MARK: 懒加载
@@ -35,7 +46,8 @@ class NHCalendarContentView: UIView,UICollectionViewDataSource,UICollectionViewD
         view.registerNib(UINib(nibName: "NHCalendarCell", bundle:nil), forCellWithReuseIdentifier: "NHCalendarCell")
         view.pagingEnabled = true
         view.showsHorizontalScrollIndicator = false
-        layout.scrollDirection=UICollectionViewScrollDirection.Horizontal
+        view.backgroundColor = UIColor.whiteColor()
+        layout.scrollDirection = .Horizontal
         layout.minimumInteritemSpacing=0
         layout.minimumLineSpacing=0
         return view
@@ -43,8 +55,7 @@ class NHCalendarContentView: UIView,UICollectionViewDataSource,UICollectionViewD
     //MARK: 布局
     override func layoutSubviews() {
         self.collectionView.frame = self.bounds
-        let W = self.bounds.size.width / CGFloat(7)
-        (self.collectionView.collectionViewLayout as! UICollectionViewFlowLayout).itemSize = CGSizeMake(W, W);
+        (self.collectionView.collectionViewLayout as! UICollectionViewFlowLayout).itemSize = CGSizeMake(self.bounds.size.width, self.bounds.size.height);
     }
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")

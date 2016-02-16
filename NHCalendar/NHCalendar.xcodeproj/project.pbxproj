@@ -19,6 +19,9 @@
 		8E003D081C72EDF800B40582 /* NHFont_Categroy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E003D071C72EDF800B40582 /* NHFont_Categroy.swift */; };
 		8E003D0B1C72FD7C00B40582 /* NHCalendarCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E003D091C72FD7C00B40582 /* NHCalendarCell.swift */; };
 		8E003D0C1C72FD7C00B40582 /* NHCalendarCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8E003D0A1C72FD7C00B40582 /* NHCalendarCell.xib */; };
+		8E62D9391C73233D001E0BF7 /* NHCalendarItemCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E62D9371C73233D001E0BF7 /* NHCalendarItemCell.swift */; };
+		8E62D93A1C73233D001E0BF7 /* NHCalendarItemCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8E62D9381C73233D001E0BF7 /* NHCalendarItemCell.xib */; };
+		8E62D93C1C73297F001E0BF7 /* NHDateTool.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E62D93B1C73297F001E0BF7 /* NHDateTool.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -36,6 +39,9 @@
 		8E003D071C72EDF800B40582 /* NHFont_Categroy.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NHFont_Categroy.swift; sourceTree = "<group>"; };
 		8E003D091C72FD7C00B40582 /* NHCalendarCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NHCalendarCell.swift; sourceTree = "<group>"; };
 		8E003D0A1C72FD7C00B40582 /* NHCalendarCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = NHCalendarCell.xib; sourceTree = "<group>"; };
+		8E62D9371C73233D001E0BF7 /* NHCalendarItemCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NHCalendarItemCell.swift; sourceTree = "<group>"; };
+		8E62D9381C73233D001E0BF7 /* NHCalendarItemCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = NHCalendarItemCell.xib; sourceTree = "<group>"; };
+		8E62D93B1C73297F001E0BF7 /* NHDateTool.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NHDateTool.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -71,12 +77,15 @@
 				8E003CED1C720C3B00B40582 /* AppDelegate.swift */,
 				8E003CEF1C720C3B00B40582 /* ViewController.swift */,
 				8E003CFF1C720DE600B40582 /* NHDate_Categroy.swift */,
+				8E62D93B1C73297F001E0BF7 /* NHDateTool.swift */,
 				8E003D071C72EDF800B40582 /* NHFont_Categroy.swift */,
 				8E003D011C721C2900B40582 /* NHCalendarView.swift */,
 				8E003D031C72ECDE00B40582 /* NHCalendarTopView.swift */,
 				8E003D051C72ECF500B40582 /* NHCalendarContentView.swift */,
 				8E003D091C72FD7C00B40582 /* NHCalendarCell.swift */,
 				8E003D0A1C72FD7C00B40582 /* NHCalendarCell.xib */,
+				8E62D9371C73233D001E0BF7 /* NHCalendarItemCell.swift */,
+				8E62D9381C73233D001E0BF7 /* NHCalendarItemCell.xib */,
 				8E003CF11C720C3B00B40582 /* Main.storyboard */,
 				8E003CF41C720C3B00B40582 /* Assets.xcassets */,
 				8E003CF61C720C3B00B40582 /* LaunchScreen.storyboard */,
@@ -147,6 +156,7 @@
 				8E003CF51C720C3B00B40582 /* Assets.xcassets in Resources */,
 				8E003CF31C720C3B00B40582 /* Main.storyboard in Resources */,
 				8E003D0C1C72FD7C00B40582 /* NHCalendarCell.xib in Resources */,
+				8E62D93A1C73233D001E0BF7 /* NHCalendarItemCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -158,6 +168,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				8E003D061C72ECF500B40582 /* NHCalendarContentView.swift in Sources */,
+				8E62D93C1C73297F001E0BF7 /* NHDateTool.swift in Sources */,
 				8E003CF01C720C3B00B40582 /* ViewController.swift in Sources */,
 				8E003D081C72EDF800B40582 /* NHFont_Categroy.swift in Sources */,
 				8E003CEE1C720C3B00B40582 /* AppDelegate.swift in Sources */,
@@ -165,6 +176,7 @@
 				8E003D001C720DE600B40582 /* NHDate_Categroy.swift in Sources */,
 				8E003D041C72ECDE00B40582 /* NHCalendarTopView.swift in Sources */,
 				8E003D0B1C72FD7C00B40582 /* NHCalendarCell.swift in Sources */,
+				8E62D9391C73233D001E0BF7 /* NHCalendarItemCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

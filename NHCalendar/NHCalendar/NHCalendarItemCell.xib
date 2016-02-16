@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="9531" systemVersion="15C50" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9529"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="NHCalendarItemCell" id="gTV-IL-0wX" customClass="NHCalendarItemCell" customModule="NHCalendar" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
+            <autoresizingMask key="autoresizingMask"/>
+            <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
+                <subviews>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="dAg-47-Cin">
+                        <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="v1d-Qd-ggH">
+                                <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
+                                <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="15"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" red="1" green="0.4039215686" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                        <constraints>
+                            <constraint firstItem="v1d-Qd-ggH" firstAttribute="top" secondItem="dAg-47-Cin" secondAttribute="top" id="7xS-wb-lfb"/>
+                            <constraint firstItem="v1d-Qd-ggH" firstAttribute="leading" secondItem="dAg-47-Cin" secondAttribute="leading" id="DVY-bZ-QHK"/>
+                            <constraint firstAttribute="trailing" secondItem="v1d-Qd-ggH" secondAttribute="trailing" id="IEG-XR-9VT"/>
+                            <constraint firstAttribute="bottom" secondItem="v1d-Qd-ggH" secondAttribute="bottom" id="JOz-Gm-2Uz"/>
+                        </constraints>
+                        <userDefinedRuntimeAttributes>
+                            <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                <integer key="value" value="5"/>
+                            </userDefinedRuntimeAttribute>
+                        </userDefinedRuntimeAttributes>
+                    </view>
+                </subviews>
+                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+            </view>
+            <constraints>
+                <constraint firstAttribute="bottom" secondItem="dAg-47-Cin" secondAttribute="bottom" id="I3e-Zj-Ram"/>
+                <constraint firstItem="dAg-47-Cin" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="Tsy-WU-sjP"/>
+                <constraint firstAttribute="trailing" secondItem="dAg-47-Cin" secondAttribute="trailing" id="avA-UC-8Dx"/>
+                <constraint firstItem="dAg-47-Cin" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="yUz-vf-EM0"/>
+            </constraints>
+            <connections>
+                <outlet property="bgView" destination="dAg-47-Cin" id="mB4-Hc-nRF"/>
+                <outlet property="label" destination="v1d-Qd-ggH" id="Xwx-j1-rj8"/>
+            </connections>
+        </collectionViewCell>
+    </objects>
+</document>
