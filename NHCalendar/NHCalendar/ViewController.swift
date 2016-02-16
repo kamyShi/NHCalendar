@@ -16,7 +16,7 @@ class ViewController: UIViewController {
 
     
         let view = NHCalendarView()
-        view.frame = CGRectMake(0, 100, 320, 300)
+        view.frame = CGRectMake(0, 100, self.view.bounds.size.width, 250)
         self.view.addSubview(view)
     
     

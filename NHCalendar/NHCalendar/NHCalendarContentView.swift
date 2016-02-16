@@ -16,12 +16,13 @@ class NHCalendarContentView: UIView,UICollectionViewDataSource,UICollectionViewD
     override init(frame: CGRect) {
         super.init(frame: frame)
         self.addSubview(collectionView)
-        getData()
+        getData(NSDate())
     }
-    func getData() {
-
-        self.dataArr.addObjectsFromArray(NHDateTool.getRecentDate(NSDate()) as [AnyObject])
-        self.collectionView.reloadData()
+    func getData(date : NSDate) {
+        self.dataArr.removeAllObjects()
+        self.dataArr.addObjectsFromArray(NHDateTool.getRecentDate(date) as [AnyObject])
+        let currentIndexPathReset = NSIndexPath(forItem: 2, inSection: 0)
+        self.collectionView.scrollToItemAtIndexPath(currentIndexPathReset, atScrollPosition: .Left, animated: false)
     }
     // MARK: collection代理
     func numberOfSectionsInCollectionView(collectionView: UICollectionView) -> Int {
@@ -35,6 +36,26 @@ class NHCalendarContentView: UIView,UICollectionViewDataSource,UICollectionViewD
         let date = self.dataArr[indexPath.row] as! NSDate
         cell.date = date
         return cell
+    }
+    func resetIndexPath() -> NSDate {
+        // 当前正在展示的位置
+        let  currentIndexPath = self.collectionView.indexPathsForVisibleItems().last
+        return self.dataArr[(currentIndexPath?.row)!] as! NSDate;
+    }
+    // MARK: scroll代理
+    /**当用户即将开始拖拽的时候就调用*/
+    func scrollViewWillBeginDragging(scrollView: UIScrollView) {
+        print("scrollViewDidEndDragging--开始")
+
+    }
+    /**当用户停止拖拽的时候就调用*/
+    func scrollViewDidEndDragging(scrollView: UIScrollView, willDecelerate decelerate: Bool) {
+        print("scrollViewDidEndDragging--松开")
+    }
+    /**停止滚动的时候*/
+    func scrollViewDidEndDecelerating(scrollView: UIScrollView) {
+        print("scrollViewDidEndDragging--结束")
+        self.getData(self.resetIndexPath())
     }
     // MARK: 懒加载
     lazy var collectionView : UICollectionView = {
@@ -56,6 +77,8 @@ class NHCalendarContentView: UIView,UICollectionViewDataSource,UICollectionViewD
     override func layoutSubviews() {
         self.collectionView.frame = self.bounds
         (self.collectionView.collectionViewLayout as! UICollectionViewFlowLayout).itemSize = CGSizeMake(self.bounds.size.width, self.bounds.size.height);
+        let currentIndexPathReset = NSIndexPath(forItem: 2, inSection: 0)
+        self.collectionView.scrollToItemAtIndexPath(currentIndexPathReset, atScrollPosition: .Left, animated: false)
     }
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
