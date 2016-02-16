@@ -58,7 +58,8 @@ class NHCalendarContentView: UIView,UICollectionViewDataSource,UICollectionViewD
     }
     func resetIndexPath() -> NSDate {
         // 当前正在展示的位置
-        let  currentIndexPath = self.collectionView.indexPathsForVisibleItems().last
+        let  currentIndexPath = self.collectionView.indexPathsForVisibleItems().first
+        print(currentIndexPath)
         self.delegate?.calendarContentViewCurrentDate(self.dataArr[(currentIndexPath?.row)!] as! NSDate)
         return self.dataArr[(currentIndexPath?.row)!] as! NSDate;
     }
