@@ -22,7 +22,7 @@ class NHCalendarContentView: UIView,UICollectionViewDataSource,UICollectionViewD
         return 44
     }
     func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCellWithReuseIdentifier("WorkHomeTopCell", forIndexPath: indexPath)
+        let cell = collectionView.dequeueReusableCellWithReuseIdentifier("NHCalendarCell", forIndexPath: indexPath) as! NHCalendarCell
         return cell
     }
     // MARK: 懒加载
@@ -32,7 +32,7 @@ class NHCalendarContentView: UIView,UICollectionViewDataSource,UICollectionViewD
         view.delegate = self;
         view.dataSource=self;
         // 注册cell
-        view.registerNib(UINib(nibName: "WorkHomeTopCell", bundle:nil), forCellWithReuseIdentifier: "WorkHomeTopCell")
+        view.registerNib(UINib(nibName: "NHCalendarCell", bundle:nil), forCellWithReuseIdentifier: "NHCalendarCell")
         view.pagingEnabled = true
         view.showsHorizontalScrollIndicator = false
         layout.scrollDirection=UICollectionViewScrollDirection.Horizontal
