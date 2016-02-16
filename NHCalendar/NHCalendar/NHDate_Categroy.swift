@@ -26,7 +26,7 @@ extension NSDate {
         //设置成第一天
         com.day = 1
         let date = calendar.dateFromComponents(com)
-        //    我们大致可以理解为：某个时间点所在的“小单元”，在“大单元”中的位置  ordinalityOfUnit
+        //我们大致可以理解为：某个时间点所在的“小单元”，在“大单元”中的位置  ordinalityOfUnit
         let firstWeekDay = calendar.ordinalityOfUnit(.Weekday, inUnit: .WeekOfMonth, forDate: date!)
         return firstWeekDay
     }

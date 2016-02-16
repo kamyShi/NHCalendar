@@ -9,13 +9,34 @@
 import UIKit
 
 class NHCalendarView: UIView {
-
-    /*
-    // Only override drawRect: if you perform custom drawing.
-    // An empty implementation adversely affects performance during animation.
-    override func drawRect(rect: CGRect) {
-        // Drawing code
+    override init(frame: CGRect) {
+        super.init(frame: frame)
+        let topView = NHCalendarTopView()
+        self.topView = topView
+        self.addSubview(topView)
+        
+        let contentView = NHCalendarContentView()
+        self.contentView = contentView
+        self.addSubview(contentView)
     }
-    */
+    //MARK:布局
+    override func layoutSubviews() {
+        self.topView.frame.size.width = self.frame.size.width
+        self.topView.frame.size.height = 40
+        
+        self.contentView.frame.origin.y = 40
+        self.contentView.frame.size.width = self.frame.size.width
+        self.contentView.frame.size.height = self.frame.size.height - 40
+    }
+    
+    //MARK:属性
+    var topView     : NHCalendarTopView!
+    var contentView : NHCalendarContentView!
+    
 
+    required init?(coder aDecoder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
+    
 }

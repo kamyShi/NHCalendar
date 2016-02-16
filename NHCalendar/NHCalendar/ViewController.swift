@@ -13,7 +13,13 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
-        print(NSDate().getMontFirstWeekDay())
+
+    
+        let view = NHCalendarView()
+        view.frame = CGRectMake(0, 100, 320, 300)
+        self.view.addSubview(view)
+    
+    
     }
 
     override func didReceiveMemoryWarning() {
