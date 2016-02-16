@@ -9,14 +9,14 @@
 import UIKit
 
 class NHCalendarCell: UICollectionViewCell,UICollectionViewDelegate,UICollectionViewDataSource {
-
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         self.addSubview(self.collectionView)
     }
     var date : NSDate? {
         didSet {
-           getData(date!)
+            getData(date!)
         }
     }
     func getData(date : NSDate) {
@@ -35,10 +35,10 @@ class NHCalendarCell: UICollectionViewCell,UICollectionViewDelegate,UICollection
         let cell = collectionView.dequeueReusableCellWithReuseIdentifier("NHCalendarItemCell", forIndexPath: indexPath) as! NHCalendarItemCell
         if indexPath.row >= self.MothFirstDay && indexPath.row <= self.MothLenght+self.MothFirstDay-1 {
             cell.label.text = "\(indexPath.row - self.MothFirstDay + 1)"
-//            cell.bgView.hidden = false
+            //            cell.bgView.hidden = false
         } else {
             cell.label.text = ""
-//            cell.bgView.hidden = true
+            //            cell.bgView.hidden = true
         }
         return cell
     }
@@ -59,7 +59,7 @@ class NHCalendarCell: UICollectionViewCell,UICollectionViewDelegate,UICollection
         view.registerNib(UINib(nibName: "NHCalendarItemCell", bundle:nil), forCellWithReuseIdentifier: "NHCalendarItemCell")
         view.pagingEnabled = true
         view.showsHorizontalScrollIndicator = false
-        view.backgroundColor = UIColor.whiteColor()
+        view.backgroundColor = UIColor(red: 244/255.0, green: 244/255.0, blue: 244/255.0, alpha: 1.0)
         layout.scrollDirection = .Vertical
         layout.minimumInteritemSpacing=1
         layout.minimumLineSpacing=1
@@ -68,5 +68,5 @@ class NHCalendarCell: UICollectionViewCell,UICollectionViewDelegate,UICollection
     //MARK: 属性
     var MothLenght = 0
     var MothFirstDay = 0
-
+    
 }
