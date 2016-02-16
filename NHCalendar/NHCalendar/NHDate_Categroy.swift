@@ -49,5 +49,12 @@ extension NSDate {
         return calendar.dateFromComponents(com)!
     }
     
+    func getTimeYYYY_MM() ->String {
+
+        let dateFormatter = NSDateFormatter()
+        dateFormatter.dateFormat = "yyyy-MM"
+        return  dateFormatter.stringFromDate(self)
+    }
+    
 }
 

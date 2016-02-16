@@ -7,7 +7,11 @@
 //
 
 import UIKit
+protocol NHCalendarContentViewDelegate {
 
+    func calendarContentViewCurrentDate(date : NSDate)
+
+}
 class NHCalendarContentView: UIView,UICollectionViewDataSource,UICollectionViewDelegate {
 
     var MothLenght = 0
@@ -37,11 +41,6 @@ class NHCalendarContentView: UIView,UICollectionViewDataSource,UICollectionViewD
         cell.date = date
         return cell
     }
-    func resetIndexPath() -> NSDate {
-        // 当前正在展示的位置
-        let  currentIndexPath = self.collectionView.indexPathsForVisibleItems().last
-        return self.dataArr[(currentIndexPath?.row)!] as! NSDate;
-    }
     // MARK: scroll代理
     /**当用户即将开始拖拽的时候就调用*/
     func scrollViewWillBeginDragging(scrollView: UIScrollView) {
@@ -56,6 +55,19 @@ class NHCalendarContentView: UIView,UICollectionViewDataSource,UICollectionViewD
     func scrollViewDidEndDecelerating(scrollView: UIScrollView) {
         print("scrollViewDidEndDragging--结束")
         self.getData(self.resetIndexPath())
+    }
+    func resetIndexPath() -> NSDate {
+        // 当前正在展示的位置
+        let  currentIndexPath = self.collectionView.indexPathsForVisibleItems().last
+        self.delegate?.calendarContentViewCurrentDate(self.dataArr[(currentIndexPath?.row)!] as! NSDate)
+        return self.dataArr[(currentIndexPath?.row)!] as! NSDate;
+    }
+    //MARK: 布局
+    override func layoutSubviews() {
+        self.collectionView.frame = self.bounds
+        (self.collectionView.collectionViewLayout as! UICollectionViewFlowLayout).itemSize = CGSizeMake(self.bounds.size.width, self.bounds.size.height);
+        let currentIndexPathReset = NSIndexPath(forItem: 2, inSection: 0)
+        self.collectionView.scrollToItemAtIndexPath(currentIndexPathReset, atScrollPosition: .Left, animated: false)
     }
     // MARK: 懒加载
     lazy var collectionView : UICollectionView = {
@@ -73,13 +85,7 @@ class NHCalendarContentView: UIView,UICollectionViewDataSource,UICollectionViewD
         layout.minimumLineSpacing=0
         return view
     }()
-    //MARK: 布局
-    override func layoutSubviews() {
-        self.collectionView.frame = self.bounds
-        (self.collectionView.collectionViewLayout as! UICollectionViewFlowLayout).itemSize = CGSizeMake(self.bounds.size.width, self.bounds.size.height);
-        let currentIndexPathReset = NSIndexPath(forItem: 2, inSection: 0)
-        self.collectionView.scrollToItemAtIndexPath(currentIndexPathReset, atScrollPosition: .Left, animated: false)
-    }
+    var delegate : NHCalendarContentViewDelegate?
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }

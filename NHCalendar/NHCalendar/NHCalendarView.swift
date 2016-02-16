@@ -17,16 +17,17 @@ class NHCalendarView: UIView {
         
         let contentView = NHCalendarContentView()
         self.contentView = contentView
+        self.contentView.delegate = self.topView
         self.addSubview(contentView)
     }
     //MARK:布局
     override func layoutSubviews() {
         self.topView.frame.size.width = self.frame.size.width
-        self.topView.frame.size.height = 40
+        self.topView.frame.size.height = 50
         
-        self.contentView.frame.origin.y = 40
+        self.contentView.frame.origin.y = 50
         self.contentView.frame.size.width = self.frame.size.width
-        self.contentView.frame.size.height = self.frame.size.height - 40
+        self.contentView.frame.size.height = self.frame.size.height - 50
     }
     
     //MARK:属性
