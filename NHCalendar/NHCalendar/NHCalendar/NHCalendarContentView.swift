@@ -8,13 +8,13 @@
 
 import UIKit
 protocol NHCalendarContentViewDelegate {
-
+    
     func calendarContentViewCurrentDate(date : NSDate)
     func calendarContemViewSelectDate(year:Int,month:Int,day:Int)
-
+    
 }
 class NHCalendarContentView: UIView,UICollectionViewDataSource,UICollectionViewDelegate,NHCalendarCellDelegate {
-
+    
     var MothLenght = 0
     var MothFirstDay = 0
     var dataArr = NSMutableArray()
@@ -46,6 +46,15 @@ class NHCalendarContentView: UIView,UICollectionViewDataSource,UICollectionViewD
         return cell
     }
     func NHCalendarCellSelectDate(year: Int, month: Int, day: Int) {
+        let date = self.dataArr[2] as! NSDate
+        let mon = date.getMonth()
+        if mon > month {
+            self.collectionView.scrollToItemAtIndexPath(NSIndexPath(forItem: 1, inSection: 0)
+                , atScrollPosition: .Left, animated: true)
+        } else if mon < month {
+            self.collectionView.scrollToItemAtIndexPath(NSIndexPath(forItem: 3, inSection: 0)
+                , atScrollPosition: .Left, animated: true)
+        }
         self.delegate?.calendarContemViewSelectDate(year, month: month, day: day)
     }
     // MARK: scroll代理
@@ -60,6 +69,11 @@ class NHCalendarContentView: UIView,UICollectionViewDataSource,UICollectionViewD
     /**停止滚动的时候*/
     func scrollViewDidEndDecelerating(scrollView: UIScrollView) {
         print("scrollViewDidEndDragging--结束")
+        self.getData(self.resetIndexPath())
+    }
+    /**动画听海的时候 */
+    func scrollViewDidEndScrollingAnimation(scrollView: UIScrollView) {
+        print("scrollViewDidEndScrollingAnimation--结束")
         self.getData(self.resetIndexPath())
     }
     func resetIndexPath() -> NSDate {

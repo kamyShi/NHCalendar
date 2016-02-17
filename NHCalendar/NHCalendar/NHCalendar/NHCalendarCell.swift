@@ -40,21 +40,40 @@ class NHCalendarCell: UICollectionViewCell,UICollectionViewDelegate,UICollection
         if indexPath.row >= self.MothFirstDay && indexPath.row <= self.MothLenght+self.MothFirstDay-1 {
             cell.date = date
             cell.day = indexPath.row - self.MothFirstDay + 1
+        } else if indexPath.row < self.MothFirstDay{
+            cell.date = date
+            cell.day = date!.getLastDateLenght() - self.MothFirstDay + indexPath.row + 1
+            cell.label.textColor = UIColor.grayColor()
+            cell.bgView.backgroundColor = UIColor.whiteColor()
         } else {
-            cell.label.text = ""
+            cell.date = date
+            cell.day = indexPath.row - self.MothLenght - self.MothFirstDay + 1
+            cell.label.textColor = UIColor.grayColor()
             cell.bgView.backgroundColor = UIColor.whiteColor()
         }
         return cell
     }
     func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
         let cell = collectionView.cellForItemAtIndexPath(indexPath) as! NHCalendarItemCell
-        if cell.label.text != "" {
+        if indexPath.row >= self.MothFirstDay && indexPath.row <= self.MothLenght+self.MothFirstDay-1 {
             let day = Int(cell.label.text!)
             let time = cell.date!.getDateY_M_D(day!)
             NSUserDefaults.standardUserDefaults().setObject(cell.date?.getDate(day!), forKey: selectDate)
             self.delegate?.NHCalendarCellSelectDate(time.0, month: time.1, day: time.2)
             collectionView.reloadData()
+            
+        } else if indexPath.row < self.MothFirstDay{
+            let day = Int(cell.label.text!)
+            let time = date!.getLastDate().getDateY_M_D(day!)
+            NSUserDefaults.standardUserDefaults().setObject(date?.getLastDate().getDate(day!), forKey: selectDate)
+            self.delegate?.NHCalendarCellSelectDate(time.0, month: time.1, day: time.2)
+        } else {
+            let day = Int(cell.label.text!)
+            let time = date!.getNextDate().getDateY_M_D(day!)
+            NSUserDefaults.standardUserDefaults().setObject(date?.getNextDate().getDate(day!), forKey: selectDate)
+            self.delegate?.NHCalendarCellSelectDate(time.0, month: time.1, day: time.2)
         }
+
     }
     //MARK: 布局
     override func layoutSubviews() {

@@ -40,6 +40,16 @@ extension NSDate {
         return com.day
     }
     /**
+     *  获取当前Month
+     */
+    func getMonth() -> Int {
+        let calendar = NSCalendar.currentCalendar()
+        //这里注意 swift要用[,]这样方式写
+        let com = calendar.components([.Year,.Month,.Day], fromDate: self)
+        return com.month
+    }
+
+    /**
      获取指定时间下一个月的时间
      */
     func getNextDate() ->NSDate {
@@ -56,6 +66,20 @@ extension NSDate {
         let com = calendar.components([.Year,.Month,.Day], fromDate: self)
         com.month -= 1
         return calendar.dateFromComponents(com)!
+    }
+    /**
+     获取指定时间下一个月的长度
+     */
+    func getNextDateLenght() ->Int {
+        let date = self.getNextDate()
+        return date.getMonthHowManyDay()
+    }
+    /**
+     获取指定时间上一个月的长度
+     */
+    func getLastDateLenght() ->Int {
+        let date = self.getLastDate()
+        return date.getMonthHowManyDay()
     }
     
     func getTimeYYYY_MM() ->String {
