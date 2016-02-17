@@ -48,6 +48,15 @@ extension NSDate {
         let com = calendar.components([.Year,.Month,.Day], fromDate: self)
         return com.month
     }
+    /**
+     *  获取当前Year
+     */
+    func getYear() -> Int {
+        let calendar = NSCalendar.currentCalendar()
+        //这里注意 swift要用[,]这样方式写
+        let com = calendar.components([.Year,.Month,.Day], fromDate: self)
+        return com.year
+    }
 
     /**
      获取指定时间下一个月的时间

@@ -48,10 +48,11 @@ class NHCalendarContentView: UIView,UICollectionViewDataSource,UICollectionViewD
     func NHCalendarCellSelectDate(year: Int, month: Int, day: Int) {
         let date = self.dataArr[2] as! NSDate
         let mon = date.getMonth()
-        if mon > month {
+        let yea = date.getYear()
+        if yea*100+mon > year*100+month {
             self.collectionView.scrollToItemAtIndexPath(NSIndexPath(forItem: 1, inSection: 0)
                 , atScrollPosition: .Left, animated: true)
-        } else if mon < month {
+        } else if yea*100+mon < year*100+month  {
             self.collectionView.scrollToItemAtIndexPath(NSIndexPath(forItem: 3, inSection: 0)
                 , atScrollPosition: .Left, animated: true)
         }
