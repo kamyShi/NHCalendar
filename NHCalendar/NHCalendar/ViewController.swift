@@ -8,20 +8,18 @@
 
 import UIKit
 
-class ViewController: UIViewController {
+class ViewController: UIViewController,NHCalendarViewDelegate {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
-
-    
         let view = NHCalendarView()
         view.frame = CGRectMake(0, 100, self.view.bounds.size.width, 250)
+        view.delegate = self
         self.view.addSubview(view)
-    
-    
     }
-
+    func NHCalendarViewSelectDate(year: Int, month: Int, day: Int) {
+        print(year)
+    }
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.

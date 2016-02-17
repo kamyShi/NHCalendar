@@ -8,7 +8,7 @@
 
 import UIKit
 
-class NHCalendarTopView: UIView,NHCalendarContentViewDelegate {
+class NHCalendarTopView: UIView {
 
     var titleLabel : UILabel!
     override init(frame: CGRect) {
@@ -24,9 +24,6 @@ class NHCalendarTopView: UIView,NHCalendarContentViewDelegate {
         self.addSubview(title)
         self.titleLabel = title
     }
-    func calendarContentViewCurrentDate(date: NSDate) {
-        self.titleLabel.text = date.getTimeYYYY_MM()
-    }
     func createLabel(title : String) {
         let label = UILabel()
         label.text = title
@@ -34,7 +31,6 @@ class NHCalendarTopView: UIView,NHCalendarContentViewDelegate {
         label.textAlignment = .Center
         self.addSubview(label)
     }
-    
     override func layoutSubviews() {
         let count = self.subviews.count
         let W = self.frame.size.width / CGFloat(count-1)

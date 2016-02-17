@@ -10,9 +10,10 @@ import UIKit
 protocol NHCalendarContentViewDelegate {
 
     func calendarContentViewCurrentDate(date : NSDate)
+    func calendarContemViewSelectDate(year:Int,month:Int,day:Int)
 
 }
-class NHCalendarContentView: UIView,UICollectionViewDataSource,UICollectionViewDelegate {
+class NHCalendarContentView: UIView,UICollectionViewDataSource,UICollectionViewDelegate,NHCalendarCellDelegate {
 
     var MothLenght = 0
     var MothFirstDay = 0
@@ -41,7 +42,11 @@ class NHCalendarContentView: UIView,UICollectionViewDataSource,UICollectionViewD
         let cell = collectionView.dequeueReusableCellWithReuseIdentifier("NHCalendarCell", forIndexPath: indexPath) as! NHCalendarCell
         let date = self.dataArr[indexPath.row] as! NSDate
         cell.date = date
+        cell.delegate = self
         return cell
+    }
+    func NHCalendarCellSelectDate(year: Int, month: Int, day: Int) {
+        self.delegate?.calendarContemViewSelectDate(year, month: month, day: day)
     }
     // MARK: scroll代理
     /**当用户即将开始拖拽的时候就调用*/

@@ -7,8 +7,14 @@
 //
 
 import UIKit
+@objc protocol NHCalendarViewDelegate {
+    /**
+     点击选择的日期
+     */
+   optional func NHCalendarViewSelectDate(year:Int,month:Int,day:Int)
+}
 
-class NHCalendarView: UIView {
+class NHCalendarView: UIView ,NHCalendarContentViewDelegate{
     override init(frame: CGRect) {
         super.init(frame: frame)
         let topView = NHCalendarTopView()
@@ -17,7 +23,7 @@ class NHCalendarView: UIView {
         
         let contentView = NHCalendarContentView()
         self.contentView = contentView
-        self.contentView.delegate = self.topView
+        self.contentView.delegate = self
         self.addSubview(contentView)
     }
     //MARK:布局
@@ -29,11 +35,17 @@ class NHCalendarView: UIView {
         self.contentView.frame.size.width = self.frame.size.width
         self.contentView.frame.size.height = self.frame.size.height - 50
     }
-    
+    //MARK:     NHCalendarContentViewDelegate
+    func calendarContentViewCurrentDate(date: NSDate) {
+        self.topView.titleLabel.text = date.getTimeYYYY_MM()
+    }
+    func calendarContemViewSelectDate(year: Int, month: Int, day: Int) {
+        self.delegate?.NHCalendarViewSelectDate?(year, month: month, day: day)
+    }
     //MARK:属性
     var topView     : NHCalendarTopView!
     var contentView : NHCalendarContentView!
-    
+    var delegate    : NHCalendarViewDelegate?
 
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")

@@ -7,6 +7,9 @@
 //
 
 import UIKit
+protocol NHCalendarCellDelegate {
+    func NHCalendarCellSelectDate(year:Int,month:Int,day:Int)
+}
 
 class NHCalendarCell: UICollectionViewCell,UICollectionViewDelegate,UICollectionViewDataSource {
     
@@ -45,8 +48,8 @@ class NHCalendarCell: UICollectionViewCell,UICollectionViewDelegate,UICollection
         let cell = collectionView.cellForItemAtIndexPath(indexPath) as! NHCalendarItemCell
         if cell.label.text != "" {
             let day = Int(cell.label.text!)
-            let time = cell.date?.getDateY_M_D(day!)
-            print(time)
+            let time = cell.date!.getDateY_M_D(day!)
+            self.delegate?.NHCalendarCellSelectDate(time.0, month: time.1, day: time.2)
         }
     }
     //MARK: 布局
@@ -75,5 +78,6 @@ class NHCalendarCell: UICollectionViewCell,UICollectionViewDelegate,UICollection
     //MARK: 属性
     var MothLenght = 0
     var MothFirstDay = 0
+    var delegate : NHCalendarCellDelegate?
     
 }
