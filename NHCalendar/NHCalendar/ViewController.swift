@@ -17,8 +17,9 @@ class ViewController: UIViewController,NHCalendarViewDelegate {
         view.delegate = self
         self.view.addSubview(view)
     }
+    //点击选择日期功能
     func NHCalendarViewSelectDate(year: Int, month: Int, day: Int) {
-        print(year)
+        print("\(year)-\(month)-\(day)")
     }
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()

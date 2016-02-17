@@ -9,7 +9,7 @@
 import UIKit
 @objc protocol NHCalendarViewDelegate {
     /**
-     点击选择的日期
+     点击选择的日期 可选的
      */
    optional func NHCalendarViewSelectDate(year:Int,month:Int,day:Int)
 }
