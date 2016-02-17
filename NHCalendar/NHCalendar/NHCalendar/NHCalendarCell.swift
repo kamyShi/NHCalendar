@@ -10,12 +10,13 @@ import UIKit
 protocol NHCalendarCellDelegate {
     func NHCalendarCellSelectDate(year:Int,month:Int,day:Int)
 }
-
+let selectDate = "NHselectDate"
 class NHCalendarCell: UICollectionViewCell,UICollectionViewDelegate,UICollectionViewDataSource {
     
     override func awakeFromNib() {
         super.awakeFromNib()
         self.addSubview(self.collectionView)
+
     }
     var date : NSDate? {
         didSet {
@@ -41,6 +42,7 @@ class NHCalendarCell: UICollectionViewCell,UICollectionViewDelegate,UICollection
             cell.day = indexPath.row - self.MothFirstDay + 1
         } else {
             cell.label.text = ""
+            cell.bgView.backgroundColor = UIColor.whiteColor()
         }
         return cell
     }
@@ -49,7 +51,9 @@ class NHCalendarCell: UICollectionViewCell,UICollectionViewDelegate,UICollection
         if cell.label.text != "" {
             let day = Int(cell.label.text!)
             let time = cell.date!.getDateY_M_D(day!)
+            NSUserDefaults.standardUserDefaults().setObject(cell.date?.getDate(day!), forKey: selectDate)
             self.delegate?.NHCalendarCellSelectDate(time.0, month: time.1, day: time.2)
+            collectionView.reloadData()
         }
     }
     //MARK: 布局

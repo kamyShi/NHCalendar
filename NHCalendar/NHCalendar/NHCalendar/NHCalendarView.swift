@@ -17,6 +17,7 @@ import UIKit
 class NHCalendarView: UIView ,NHCalendarContentViewDelegate{
     override init(frame: CGRect) {
         super.init(frame: frame)
+        NSUserDefaults.standardUserDefaults().setObject(NSDate(), forKey: selectDate)
         let topView = NHCalendarTopView()
         self.topView = topView
         self.addSubview(topView)

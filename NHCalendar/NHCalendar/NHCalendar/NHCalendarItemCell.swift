@@ -7,7 +7,6 @@
 //
 
 import UIKit
-
 class NHCalendarItemCell: UICollectionViewCell {
     
     override func awakeFromNib() {
@@ -25,6 +24,19 @@ class NHCalendarItemCell: UICollectionViewCell {
                 }
             } else {
                 label.textColor = UIColor.blackColor()
+            }
+            let selectdate = NSUserDefaults.standardUserDefaults().objectForKey(selectDate) as? NSDate
+            if selectdate == nil {
+                return
+            }
+            if date!.isEqualMonth(selectdate!) {
+                if day == selectdate!.getDay() {
+                    bgView.backgroundColor = UIColor.orangeColor()
+                } else {
+                    bgView.backgroundColor = UIColor.whiteColor()
+                }
+            } else {
+                bgView.backgroundColor = UIColor.whiteColor()
             }
         }
     }

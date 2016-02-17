@@ -78,6 +78,17 @@ extension NSDate {
     /**
      是否是这个月
      */
+    func isEqualMonth(date : NSDate)->Bool {
+        let calendar = NSCalendar.currentCalendar()
+        /// 获取self的时间
+        let comSelf = calendar.components([.Year,.Month,.Day], fromDate: self)
+        /// 获取当前的时间
+        let comNow = calendar.components([.Year,.Month,.Day], fromDate: date)
+        return comSelf.year==comNow.year && comSelf.month==comNow.month
+    }
+    /**
+     是否是这个月
+     */
     func isThisMonth()->Bool {
         let calendar = NSCalendar.currentCalendar()
         /// 获取self的时间
@@ -95,6 +106,16 @@ extension NSDate {
         comSelf.day = day
         return (comSelf.year,comSelf.month,comSelf.day)
 
+    }
+    /**
+     获取指定date
+     */
+    func getDate(day : Int)-> NSDate {
+        let calendar = NSCalendar.currentCalendar()
+        let comSelf = calendar.components([.Year,.Month,.Day], fromDate: self)
+        comSelf.day = day
+        return calendar.dateFromComponents(comSelf)!
+        
     }
     
 }
