@@ -34,13 +34,20 @@ class NHCalendarCell: UICollectionViewCell,UICollectionViewDelegate,UICollection
     func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCellWithReuseIdentifier("NHCalendarItemCell", forIndexPath: indexPath) as! NHCalendarItemCell
         if indexPath.row >= self.MothFirstDay && indexPath.row <= self.MothLenght+self.MothFirstDay-1 {
-            cell.label.text = "\(indexPath.row - self.MothFirstDay + 1)"
-            //            cell.bgView.hidden = false
+            cell.date = date
+            cell.day = indexPath.row - self.MothFirstDay + 1
         } else {
             cell.label.text = ""
-            //            cell.bgView.hidden = true
         }
         return cell
+    }
+    func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
+        let cell = collectionView.cellForItemAtIndexPath(indexPath) as! NHCalendarItemCell
+        if cell.label.text != "" {
+            let day = Int(cell.label.text!)
+            let time = cell.date?.getDateY_M_D(day!)
+            print(time)
+        }
     }
     //MARK: 布局
     override func layoutSubviews() {

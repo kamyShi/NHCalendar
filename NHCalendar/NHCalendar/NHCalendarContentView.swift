@@ -27,6 +27,8 @@ class NHCalendarContentView: UIView,UICollectionViewDataSource,UICollectionViewD
         self.dataArr.addObjectsFromArray(NHDateTool.getRecentDate(date) as [AnyObject])
         let currentIndexPathReset = NSIndexPath(forItem: 2, inSection: 0)
         self.collectionView.scrollToItemAtIndexPath(currentIndexPathReset, atScrollPosition: .Left, animated: false)
+        self.delegate?.calendarContentViewCurrentDate(self.dataArr[2] as! NSDate)
+        self.collectionView.reloadData()
     }
     // MARK: collection代理
     func numberOfSectionsInCollectionView(collectionView: UICollectionView) -> Int {
@@ -45,7 +47,6 @@ class NHCalendarContentView: UIView,UICollectionViewDataSource,UICollectionViewD
     /**当用户即将开始拖拽的时候就调用*/
     func scrollViewWillBeginDragging(scrollView: UIScrollView) {
         print("scrollViewDidEndDragging--开始")
-
     }
     /**当用户停止拖拽的时候就调用*/
     func scrollViewDidEndDragging(scrollView: UIScrollView, willDecelerate decelerate: Bool) {
@@ -59,8 +60,6 @@ class NHCalendarContentView: UIView,UICollectionViewDataSource,UICollectionViewD
     func resetIndexPath() -> NSDate {
         // 当前正在展示的位置
         let  currentIndexPath = self.collectionView.indexPathsForVisibleItems().first
-        print(currentIndexPath)
-        self.delegate?.calendarContentViewCurrentDate(self.dataArr[(currentIndexPath?.row)!] as! NSDate)
         return self.dataArr[(currentIndexPath?.row)!] as! NSDate;
     }
     //MARK: 布局

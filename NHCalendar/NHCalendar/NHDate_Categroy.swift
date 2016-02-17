@@ -31,6 +31,15 @@ extension NSDate {
         return firstWeekDay - 1
     }
     /**
+     *  获取当前Day
+     */
+    func getDay() -> Int {
+        let calendar = NSCalendar.currentCalendar()
+        //这里注意 swift要用[,]这样方式写
+        let com = calendar.components([.Year,.Month,.Day], fromDate: self)
+        return com.day
+    }
+    /**
      获取指定时间下一个月的时间
      */
     func getNextDate() ->NSDate {
@@ -50,10 +59,42 @@ extension NSDate {
     }
     
     func getTimeYYYY_MM() ->String {
-
+        
         let dateFormatter = NSDateFormatter()
         dateFormatter.dateFormat = "yyyy-MM"
         return  dateFormatter.stringFromDate(self)
+    }
+    /**
+     是否是今天
+     */
+    func isToday()->Bool {
+        let calendar = NSCalendar.currentCalendar()
+        /// 获取self的时间
+        let comSelf = calendar.components([.Year,.Month,.Day], fromDate: self)
+        /// 获取当前的时间
+        let comNow = calendar.components([.Year,.Month,.Day], fromDate: NSDate())
+        return comSelf.year==comNow.year && comSelf.month==comNow.month && comSelf.day==comNow.day
+    }
+    /**
+     是否是这个月
+     */
+    func isThisMonth()->Bool {
+        let calendar = NSCalendar.currentCalendar()
+        /// 获取self的时间
+        let comSelf = calendar.components([.Year,.Month,.Day], fromDate: self)
+        /// 获取当前的时间
+        let comNow = calendar.components([.Year,.Month,.Day], fromDate: NSDate())
+        return comSelf.year==comNow.year && comSelf.month==comNow.month
+    }
+    /**
+     分别获取准确的年月日
+     */
+    func getDateY_M_D(day : Int)->(year:Int,month:Int,day:Int) {
+        let calendar = NSCalendar.currentCalendar()
+        let comSelf = calendar.components([.Year,.Month,.Day], fromDate: self)
+        comSelf.day = day
+        return (comSelf.year,comSelf.month,comSelf.day)
+
     }
     
 }
