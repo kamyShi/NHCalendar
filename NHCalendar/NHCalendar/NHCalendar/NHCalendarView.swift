@@ -27,6 +27,11 @@ class NHCalendarView: UIView ,NHCalendarContentViewDelegate{
         self.contentView.delegate = self
         self.addSubview(contentView)
     }
+    var titleColor : UIColor?{
+        didSet {
+            topView.titleLabel.textColor = titleColor
+        }
+    }
     //MARK:布局
     override func layoutSubviews() {
         self.topView.frame.size.width = self.frame.size.width
@@ -47,7 +52,6 @@ class NHCalendarView: UIView ,NHCalendarContentViewDelegate{
     var topView     : NHCalendarTopView!
     var contentView : NHCalendarContentView!
     var delegate    : NHCalendarViewDelegate?
-
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }

@@ -9,11 +9,11 @@
 import UIKit
 
 class NHCalendarTopView: UIView {
-
+    
     var titleLabel : UILabel!
     override init(frame: CGRect) {
         super.init(frame: frame)
-        self.backgroundColor = UIColor.grayColor()
+        self.backgroundColor = UIColor(red: 244/255.0, green: 244/255.0, blue: 244/255.0, alpha: 1.0)
         let arr = ["星期日","星期一","星期二","星期三","星期四","星期五","星期六"]
         for title in arr {
             self.createLabel(title)
@@ -28,6 +28,7 @@ class NHCalendarTopView: UIView {
         let label = UILabel()
         label.text = title
         label.font = UIFont.fontWithSize(13)
+        label.textColor = UIColor(red: 100/255.0, green: 100/255.0, blue: 100/255.0, alpha: 1.0)
         label.textAlignment = .Center
         self.addSubview(label)
     }

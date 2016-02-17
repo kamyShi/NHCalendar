@@ -14,6 +14,7 @@ class ViewController: UIViewController,NHCalendarViewDelegate {
         super.viewDidLoad()
         let view = NHCalendarView()
         view.frame = CGRectMake(0, 100, self.view.bounds.size.width, 250)
+        view.titleColor = UIColor.blackColor()
         view.delegate = self
         self.view.addSubview(view)
     }

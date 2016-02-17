@@ -69,18 +69,18 @@ class NHCalendarContentView: UIView,UICollectionViewDataSource,UICollectionViewD
     }
     /**停止滚动的时候*/
     func scrollViewDidEndDecelerating(scrollView: UIScrollView) {
-        print("scrollViewDidEndDragging--结束")
-        self.getData(self.resetIndexPath())
+        let index = Int(scrollView.contentOffset.x/self.bounds.size.width)
+        print(index)
+        self.getData(self.resetIndexPath(index))
     }
     /**动画听海的时候 */
     func scrollViewDidEndScrollingAnimation(scrollView: UIScrollView) {
         print("scrollViewDidEndScrollingAnimation--结束")
-        self.getData(self.resetIndexPath())
+        let index = Int(scrollView.contentOffset.x/self.bounds.size.width)
+        self.getData(self.resetIndexPath(index))
     }
-    func resetIndexPath() -> NSDate {
-        // 当前正在展示的位置
-        let  currentIndexPath = self.collectionView.indexPathsForVisibleItems().first
-        return self.dataArr[(currentIndexPath?.row)!] as! NSDate;
+    func resetIndexPath(index : Int) -> NSDate {
+        return self.dataArr[index] as! NSDate;
     }
     //MARK: 布局
     override func layoutSubviews() {
