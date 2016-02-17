@@ -13,6 +13,7 @@ import UIKit
      */
    optional func NHCalendarViewSelectDate(year:Int,month:Int,day:Int)
 }
+typealias selectClosure = (year:Int,month:Int,day:Int) -> Void
 
 class NHCalendarView: UIView ,NHCalendarContentViewDelegate{
     override init(frame: CGRect) {
@@ -27,9 +28,20 @@ class NHCalendarView: UIView ,NHCalendarContentViewDelegate{
         self.contentView.delegate = self
         self.addSubview(contentView)
     }
+    class func showCalendar(view : UIView , frame : CGRect,selectDate : selectClosure)->NHCalendarView{
+        let calendarView = NHCalendarView(frame: frame)
+        calendarView.tempclosure = selectDate
+        view.addSubview(calendarView)
+        return calendarView
+    }
     var titleColor : UIColor?{
         didSet {
             topView.titleLabel.textColor = titleColor
+        }
+    }
+    var topColor : UIColor?{
+        didSet {
+            topView.backgroundColor = topColor   
         }
     }
     //MARK:布局
@@ -47,11 +59,13 @@ class NHCalendarView: UIView ,NHCalendarContentViewDelegate{
     }
     func calendarContemViewSelectDate(year: Int, month: Int, day: Int) {
         self.delegate?.NHCalendarViewSelectDate?(year, month: month, day: day)
+        self.tempclosure?(year: year, month: month, day: day)
     }
     //MARK:属性
     var topView     : NHCalendarTopView!
     var contentView : NHCalendarContentView!
     var delegate    : NHCalendarViewDelegate?
+    var tempclosure : selectClosure?
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }

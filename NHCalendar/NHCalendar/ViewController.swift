@@ -12,11 +12,14 @@ class ViewController: UIViewController,NHCalendarViewDelegate {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        let view = NHCalendarView()
-        view.frame = CGRectMake(0, 100, self.view.bounds.size.width, 250)
-        view.titleColor = UIColor.blackColor()
-        view.delegate = self
-        self.view.addSubview(view)
+//        let view = NHCalendarView()
+//        view.frame = CGRectMake(0, 100, self.view.bounds.size.width, 250)
+//        view.titleColor = UIColor.blackColor()
+//        view.delegate = self
+//        self.view.addSubview(view)
+        NHCalendarView.showCalendar(self.view, frame: CGRectMake(0, 100, self.view.bounds.size.width, 250)) { (year, month, day) -> Void in
+            print("\(year)-\(month)-\(day)")
+        }
     }
     //点击选择日期功能
     func NHCalendarViewSelectDate(year: Int, month: Int, day: Int) {
