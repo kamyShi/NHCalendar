@@ -28,7 +28,7 @@ class NHCalendarView: UIView ,NHCalendarContentViewDelegate{
         self.contentView.delegate = self
         self.addSubview(contentView)
     }
-    class func showCalendar(view : UIView , frame : CGRect,selectDate : selectClosure)->NHCalendarView{
+    class func show(view : UIView , frame : CGRect,selectDate : selectClosure)->NHCalendarView{
         let calendarView = NHCalendarView(frame: frame)
         calendarView.tempclosure = selectDate
         view.addSubview(calendarView)

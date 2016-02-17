@@ -17,7 +17,8 @@ class ViewController: UIViewController,NHCalendarViewDelegate {
 //        view.titleColor = UIColor.blackColor()
 //        view.delegate = self
 //        self.view.addSubview(view)
-        NHCalendarView.showCalendar(self.view, frame: CGRectMake(0, 100, self.view.bounds.size.width, 250)) { (year, month, day) -> Void in
+        
+        NHCalendarView.show(self.view, frame: CGRectMake(0, 100, self.view.bounds.size.width, 250)) { (year, month, day) -> Void in
             print("\(year)-\(month)-\(day)")
         }
     }
