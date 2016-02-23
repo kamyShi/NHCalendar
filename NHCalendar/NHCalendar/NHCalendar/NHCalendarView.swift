@@ -75,10 +75,10 @@ class NHCalendarView: UIView ,NHCalendarContentViewDelegate{
         self.tempclosure?(year: year, month: month, day: day)
     }
     //MARK:属性
-    var topView     : NHCalendarTopView!
-    var contentView : NHCalendarContentView!
-    var delegate    : NHCalendarViewDelegate?
-    var tempclosure : selectClosure?
+   private var topView     : NHCalendarTopView!
+   private var contentView : NHCalendarContentView!
+   private var delegate    : NHCalendarViewDelegate?
+   private var tempclosure : selectClosure?
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }

@@ -80,7 +80,7 @@ class NHCalendarContentView: UIView,UICollectionViewDataSource,UICollectionViewD
         print(index)
         self.getData(self.resetIndexPath(index))
     }
-    /**动画听海的时候 */
+    /**动画停止的时候 */
     func scrollViewDidEndScrollingAnimation(scrollView: UIScrollView) {
         print("scrollViewDidEndScrollingAnimation--结束")
         let index = Int(scrollView.contentOffset.x/self.bounds.size.width)
