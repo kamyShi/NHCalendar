@@ -15,5 +15,11 @@ extension UIFont {
     class func fontWithSize(size : CGFloat)->UIFont {
         return UIFont(name: "HelveticaNeue", size: size)!
     }
+    /**
+     牛辉
+     */
+    convenience init(namesize : CGFloat) {
+        self.init(name : "HelveticaNeue" ,size : namesize)!
+    }
     
 }

@@ -21,6 +21,10 @@ func NHCalendarViewSelectDate(year: Int, month: Int, day: Int) {
 NHCalendarView.show(self.view, frame: CGRectMake(0, 100, self.view.bounds.size.width, 250)) { (year, month, day) -> Void in
 print("\(year)-\(month)-\(day)")
 }
+#便利构造器用法
+self.calendar = NHCalendarView(frame: CGRectMake(0, 100, self.view.bounds.size.width, 250), view: self.view, selectDate: { (year, month, day) -> Void in
+print("\(year)-\(month)-\(day)")
+})
 #增加回到今天功能
 self.calendar?.backToDay()
 

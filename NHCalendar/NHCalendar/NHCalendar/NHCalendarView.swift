@@ -37,6 +37,14 @@ class NHCalendarView: UIView ,NHCalendarContentViewDelegate{
         view.addSubview(calendarView)
         return calendarView
     }
+    /**
+     遍历构造器
+     */
+    convenience init(frame: CGRect ,view : UIView ,selectDate : selectClosure) {
+        self.init(frame : frame)
+        self.tempclosure = selectDate
+        view.addSubview(self)
+    }
     /// 设置头部当前日历字体颜色
     var titleColor : UIColor?{
         didSet {
