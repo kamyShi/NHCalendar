@@ -18,6 +18,9 @@ typealias selectClosure = (year:Int,month:Int,day:Int) -> Void
 class NHCalendarView: UIView ,NHCalendarContentViewDelegate{
     override init(frame: CGRect) {
         super.init(frame: frame)
+        createUI()
+    }
+    func createUI() {
         NSUserDefaults.standardUserDefaults().setObject(NSDate(), forKey: selectDate)
         let topView = NHCalendarTopView()
         self.topView = topView
