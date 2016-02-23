@@ -24,6 +24,9 @@ class ViewController: UIViewController,NHCalendarViewDelegate {
         }
     }
     @IBAction func backClick(sender: UIButton) {
+        /**
+        回到今天
+        */
         self.calendar?.backToDay()
     }
     //点击选择日期功能

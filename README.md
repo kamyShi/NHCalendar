@@ -21,6 +21,9 @@ func NHCalendarViewSelectDate(year: Int, month: Int, day: Int) {
 NHCalendarView.show(self.view, frame: CGRectMake(0, 100, self.view.bounds.size.width, 250)) { (year, month, day) -> Void in
 print("\(year)-\(month)-\(day)")
 }
+#增加回到今天功能
+self.calendar?.backToDay()
+
 #逐步完善一下功能 
 1。点击选择时期，给出选择的效果
 2。可自定义颜色和字体
