@@ -20,7 +20,7 @@ class NHCalendarView: UIView ,NHCalendarContentViewDelegate{
         super.init(frame: frame)
         createUI()
     }
-    func createUI() {
+  private  func createUI() {
         NSUserDefaults.standardUserDefaults().setObject(NSDate(), forKey: selectDate)
         let topView = NHCalendarTopView()
         self.topView = topView
@@ -37,15 +37,25 @@ class NHCalendarView: UIView ,NHCalendarContentViewDelegate{
         view.addSubview(calendarView)
         return calendarView
     }
+    /// 设置头部当前日历字体颜色
     var titleColor : UIColor?{
         didSet {
             topView.titleLabel.textColor = titleColor
         }
     }
+    /// 设置头部颜色
     var topColor : UIColor?{
         didSet {
             topView.backgroundColor = topColor   
         }
+    }
+    /**
+     回到今天
+     */
+    func backToDay() {
+        
+        self.contentView.backToDay()
+        
     }
     //MARK:布局
     override func layoutSubviews() {

@@ -31,6 +31,13 @@ class NHCalendarContentView: UIView,UICollectionViewDataSource,UICollectionViewD
         self.delegate?.calendarContentViewCurrentDate(self.dataArr[2] as! NSDate)
         self.collectionView.reloadData()
     }
+    /**
+     回到今天
+     */
+    func backToDay() {
+        NSUserDefaults.standardUserDefaults().setObject(NSDate(), forKey: selectDate)
+        getData(NSDate())
+    }
     // MARK: collection代理
     func numberOfSectionsInCollectionView(collectionView: UICollectionView) -> Int {
         return 1

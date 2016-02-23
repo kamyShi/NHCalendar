@@ -10,6 +10,7 @@ import UIKit
 
 class ViewController: UIViewController,NHCalendarViewDelegate {
 
+    var calendar : NHCalendarView?
     override func viewDidLoad() {
         super.viewDidLoad()
 //        let view = NHCalendarView()
@@ -18,9 +19,12 @@ class ViewController: UIViewController,NHCalendarViewDelegate {
 //        view.delegate = self
 //        self.view.addSubview(view)
         
-        NHCalendarView.show(self.view, frame: CGRectMake(0, 100, self.view.bounds.size.width, 250)) { (year, month, day) -> Void in
+       self.calendar =  NHCalendarView.show(self.view, frame: CGRectMake(0, 100, self.view.bounds.size.width, 250)) { (year, month, day) -> Void in
             print("\(year)-\(month)-\(day)")
         }
+    }
+    @IBAction func backClick(sender: UIButton) {
+        self.calendar?.backToDay()
     }
     //点击选择日期功能
     func NHCalendarViewSelectDate(year: Int, month: Int, day: Int) {
